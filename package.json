@@ -32,7 +32,9 @@
   ],
   "author": "Botond Balazs",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "qs": "^6.9.4"
+  },
   "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
