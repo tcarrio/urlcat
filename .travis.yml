@@ -17,22 +17,22 @@ matrix:
   include:
     - language: node_js
       node_js: lts/*
-      script: node_pipeline
+      script: ./node_pipeline
     - language: node_js
       node_js: 14
-      script: node_pipeline
+      script: ./node_pipeline
     - language: node_js
       node_js: 13
-      script: node_pipeline
+      script: ./node_pipeline
     - language: node_js
       node_js: 12
-      script: node_pipeline
+      script: ./node_pipeline
     - language: node_js
       node_js: 11
-      script: node_pipeline
+      script: ./node_pipeline
     - language: node_js
       node_js: 10
-      script: node_pipeline
+      script: ./node_pipeline
     
     - language: minimal
       services:
