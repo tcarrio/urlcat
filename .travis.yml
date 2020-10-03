@@ -1,38 +1,19 @@
-jobs:
-  include:
-    - stage: node_pipeline
-      script:
-        - npm run lint
-        - npm test
-        - npm run coverage
-
+language: node_js
 matrix:
   include:
-    - language: node_js
-      node_js: lts/*
-      script: ./node_pipeline
-    - language: node_js
-      node_js: 14
-      script: ./node_pipeline
-    - language: node_js
-      node_js: 13
-      script: ./node_pipeline
-    - language: node_js
-      node_js: 12
-      script: ./node_pipeline
-    - language: node_js
-      node_js: 11
-      script: ./node_pipeline
-    - language: node_js
-      node_js: 10
-      script: ./node_pipeline
-    
+    - node_js: lts/*
+      script: ./.ci/node_pipeline
+    - node_js: 14
+      script: ./.ci/node_pipeline
+    - node_js: 13
+      script: ./.ci/node_pipeline
+    - node_js: 12
+      script: ./.ci/node_pipeline
+    - node_js: 11
+      script: ./.ci/node_pipeline
+    - node_js: 10
+      script: ./.ci/node_pipeline
     - language: minimal
       services:
         - docker
-      script:
-        - docker build -f Dockerfile.deno -t urlcat-deno .
-        - docker run --rm urlcat-deno run ./src/index.ts
-        - docker run --rm urlcat-deno bundle ./src/index.ts
-        - docker run --rm urlcat-deno lint --unstable src/
-        - docker rmi urlcat-deno
+      script: ./.ci/deno_pipeline
