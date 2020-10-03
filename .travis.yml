@@ -1,12 +1,21 @@
-language: node_js
-node_js:
-  - lts/*
-  - 14
-  - 13
-  - 12
-  - 11
-  - 10
-script:
-  - npm run lint
-  - npm test
-  - npm run coverage
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - lts/*
+        # TODO: Uncomment node versions
+        # - 14
+        # - 13
+        # - 12
+        # - 11
+        # - 10
+      script:
+        - npm run lint
+        - npm test
+        - npm run coverage
+    - language: minimal
+      services:
+        - docker
+      script:
+        - docker build -f Dockerfile.deno -t urlcat-deno-build .
+        - docker rmi urlcat-deno-build
