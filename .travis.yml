@@ -37,4 +37,4 @@ matrix:
     - language: minimal
       services:
         - docker
-      script: deno_pipeline
+      script: ./deno_pipeline
