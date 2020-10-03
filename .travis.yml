@@ -5,13 +5,6 @@ jobs:
         - npm run lint
         - npm test
         - npm run coverage
-    - stage: deno_pipeline
-      script:
-        - docker build -f Dockerfile.deno -t urlcat-deno .
-        - docker run --rm urlcat-deno run ./src/index.ts
-        - docker run --rm urlcat-deno bundle ./src/index.ts
-        - docker run --rm urlcat-deno lint --unstable src/
-        - docker rmi urlcat-deno
 
 matrix:
   include:
@@ -37,4 +30,9 @@ matrix:
     - language: minimal
       services:
         - docker
-      script: ./deno_pipeline
+      script:
+        - docker build -f Dockerfile.deno -t urlcat-deno .
+        - docker run --rm urlcat-deno run ./src/index.ts
+        - docker run --rm urlcat-deno bundle ./src/index.ts
+        - docker run --rm urlcat-deno lint --unstable src/
+        - docker rmi urlcat-deno
