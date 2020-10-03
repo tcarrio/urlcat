@@ -4,4 +4,5 @@ WORKDIR /app
 RUN mkdir -p ./dist && \
     deno run ./src/index.ts && \
     deno bundle ./src/index.ts > ./dist/index.js && \
-    deno run ./dist/index.js
+    deno run ./dist/index.js &&
+    exit 1
