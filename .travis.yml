@@ -2,18 +2,18 @@ language: node_js
 matrix:
   include:
     - node_js: lts/*
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - node_js: 14
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - node_js: 13
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - node_js: 12
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - node_js: 11
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - node_js: 10
-      script: ./.ci/node_pipeline
+      script: ./.ci/node_pipeline.sh
     - language: minimal
       services:
         - docker
-      script: ./.ci/deno_pipeline
+      script: ./.ci/deno_pipeline.sh
